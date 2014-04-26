@@ -19,7 +19,7 @@ float intensity = max(dot(v_normal,light), 0.0) * 0.1;
 vec3 indirect = texture2D(texture, v_uv).rgb;
 
 float fog_cord = (gl_FragCoord.z / gl_FragCoord.w) / 1000.0;
-float fog_density = 70.0;
+float fog_density = 60.0;
 float fog = fog_cord * fog_density;
 vec3 fog_color = vec3(0.0, 0.1, 0.2);
 
