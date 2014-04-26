@@ -24,14 +24,14 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Ludum dare 29
+PROJECTNAME=ludum-dare-29
 
 # Active Configuration
-DEFAULTCONF=Debug
+DEFAULTCONF=Debug-w32
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Debug Release 
+ALLCONFS=Debug-w32 Release Debug-unix 
 
 
 # build

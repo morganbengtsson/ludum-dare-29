@@ -112,7 +112,7 @@ int main(int argc, char** argv) {
         double old_time = ogli::now_ms();      
        
         renderer.clear(glm::vec3(1.0f, 0.0f, 0.0f));
-        renderer.render(model, glm::mat4(1.0f), view, projection);
+        //renderer.render(model, glm::mat4(1.0f), view, projection);
         glfwSwapBuffers(window);
         glfwPollEvents();        
         frame_time = ogli::now_ms() - old_time;
