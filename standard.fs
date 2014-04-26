@@ -28,7 +28,7 @@ vec3 frag_color = mix(fog_color, indirect, clamp(1.0 - fog, 0.0, 1.0));
 
 gl_FragColor = vec4(frag_color, 1.0);
 
-//gl_FragColor = vec4(v_position, 1.0);
+gl_FragColor = vec4(indirect, 1.0);
 
 //gl_FragColor = vec4(color.xyz, 1.0);
 

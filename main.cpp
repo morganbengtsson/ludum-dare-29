@@ -107,29 +107,23 @@ int main(int argc, char** argv) {
     
     mo::Renderer renderer;
     Assets assets;
-
     
-    glm::vec3 v1(0.0f, 0.0f, 0.0f);
-    glm::vec3 v2(1.0f, 0.0f, 0.0f);
-    glm::vec3 v3(1.0f, 1.0f, 0.0f);
-    glm::vec3 v4(0.0f, 1.0f, 0.0f);
-    glm::vec3 n(1.0f, 0.0f, 0.0f);
-    glm::vec2 uv(0.0f, 0.0f);
-    std::vector<mo::Vertex> vertices = {mo::Vertex(v1, n, uv), 
-        mo::Vertex(v2, n, uv),mo::Vertex(v3, n, uv),mo::Vertex(v4, n, uv)};
     
-    std::vector<int> elements = {0, 1, 2, 3};
+    auto ortho_proj = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f);
     
-    mo::Mesh mesh(vertices.begin(), vertices.end(), elements.begin(), elements.end());
     
     mo::Model model(assets.loadMesh("data/Level.obj"), assets.loadTexture("data/Floor.png"));
-    
+    mo::Model quad(assets.loadMesh("data/Quad.obj"), assets.loadTexture("data/Block.png"));    
     double frame_time = 0.0;
     while (!glfwWindowShouldClose(window)) {
+        
+        view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
+        
         double old_time = ogli::now_ms();      
         player.update(frame_time);
         renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
-        renderer.render(model, player.transform(), view, projection);
+        renderer.render(model, glm::mat4(1.0f), view, projection);
+        renderer.render(quad, glm::mat4(1.0f), view, projection);
         glfwSwapBuffers(window);
         glfwPollEvents();        
         frame_time = ogli::now_ms() - old_time;
