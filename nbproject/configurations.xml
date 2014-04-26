@@ -49,6 +49,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Assets.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Assets.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -72,6 +76,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Assets.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Assets.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -96,6 +104,7 @@
             <pElem>../ogli</pElem>
             <pElem>../imgui</pElem>
             <pElem>../mo</pElem>
+            <pElem>../objload</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
@@ -114,6 +123,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Assets.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Assets.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>

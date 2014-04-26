@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Assets.o \
 	${OBJECTDIR}/main.o
 
 
@@ -72,10 +73,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Assets.o: Assets.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Assets.o Assets.cpp
+
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
