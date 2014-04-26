@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Assets.o \
+	${OBJECTDIR}/Player.o \
 	${OBJECTDIR}/main.o
 
 
@@ -77,6 +78,11 @@ ${OBJECTDIR}/Assets.o: Assets.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Assets.o Assets.cpp
+
+${OBJECTDIR}/Player.o: Player.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

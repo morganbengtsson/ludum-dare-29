@@ -23,46 +23,60 @@
 #include <mo/Vertex.h>
 
 #include "Assets.h"
+#include "Player.h"
 
 float resolution_x = 1280.0f;
 float resolution_y = 800.0f;
 
 auto projection = glm::perspective(45.0f, resolution_x / resolution_y, 1.0f, 1000.f);
-auto view = glm::lookAt(glm::vec3(0.0f, 10.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+auto view = glm::lookAt(glm::vec3(0.0f, 10.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+Player player;
 
 void error_callback(int error, const char* description) {
     fputs(description, stderr);
 }
 
+
+
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
     if (key == GLFW_KEY_A && action == GLFW_PRESS) {
-        
+        player.left = true;
     };
     if (key == GLFW_KEY_A && action == GLFW_RELEASE) {
-       
+        player.left = false;
     };
     if (key == GLFW_KEY_D) {
-        
+        player.right = true;
     };
     if (key == GLFW_KEY_D && action == GLFW_RELEASE) {
-        
+        player.right = false;
     };
     if (key == GLFW_KEY_W){
-       
+        player.forward = true;
     };
     if (key == GLFW_KEY_W && action == GLFW_RELEASE){
-        
+        player.forward = false;
     }
     if (key == GLFW_KEY_S){
-        
+        player.back = true;
     };
     if (key == GLFW_KEY_S && action == GLFW_RELEASE){
-        
+        player.back = false;
     }
     if (key == GLFW_KEY_SPACE ){
-    
+        player.up = true;
+    }
+    if(key == GLFW_KEY_SPACE && action == GLFW_RELEASE){
+        player.up = false;
+    }
+    if (key == GLFW_KEY_LEFT_SHIFT){
+        player.down = true;
+    }
+    if (key == GLFW_KEY_LEFT_SHIFT && action == GLFW_RELEASE){
+        player.down = false;
     }
 }
 
@@ -113,9 +127,9 @@ int main(int argc, char** argv) {
     double frame_time = 0.0;
     while (!glfwWindowShouldClose(window)) {
         double old_time = ogli::now_ms();      
-       
+        player.update(frame_time);
         renderer.clear(glm::vec3(0.1f, 0.1f, 0.1f));
-        renderer.render(model, glm::mat4(1.0f), view, projection);
+        renderer.render(model, player.transform(), view, projection);
         glfwSwapBuffers(window);
         glfwPollEvents();        
         frame_time = ogli::now_ms() - old_time;
