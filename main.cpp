@@ -20,12 +20,12 @@
 
 #include <mo/Renderer.h>
 #include <mo/Model.h>
-
+#include <mo/Vertex.h>
 
 float resolution_x = 1280.0f;
 float resolution_y = 800.0f;
 
-auto projection_ = glm::perspective(45.0f, resolution_x / resolution_y, 1.0f, 1000.f);
+auto projection = glm::perspective(45.0f, resolution_x / resolution_y, 1.0f, 1000.f);
 auto view = glm::lookAt(glm::vec3(0.0f, -10.0f, 10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 void error_callback(int error, const char* description) {
@@ -89,14 +89,30 @@ int main(int argc, char** argv) {
     //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     
     
-    mo::Renderer renderer;    
+    mo::Renderer renderer;
+
+    
+    glm::vec3 v1(0.0f, 0.0f, 0.0f);
+    glm::vec3 v2(1.0f, 0.0f, 0.0f);
+    glm::vec3 v3(1.0f, 1.0f, 0.0f);
+    glm::vec3 v4(0.0f, 1.0f, 0.0f);
+    glm::vec3 n(1.0f, 0.0f, 0.0f);
+    glm::vec2 uv(0.0f, 0.0f);
+    std::vector<mo::Vertex> vertices = {mo::Vertex(v1, n, uv), 
+        mo::Vertex(v2, n, uv),mo::Vertex(v3, n, uv),mo::Vertex(v4, n, uv)};
+    
+    std::vector<int> elements = {0, 1, 2, 3};
+    
+    mo::Mesh mesh(vertices.begin(), vertices.end(), elements.begin(), elements.end());
+    
+    mo::Model model(&mesh, 0);
     
     double frame_time = 0.0;
     while (!glfwWindowShouldClose(window)) {
         double old_time = ogli::now_ms();      
        
         renderer.clear(glm::vec3(1.0f, 0.0f, 0.0f));
-
+        renderer.render(model, glm::mat4(1.0f), view, projection);
         glfwSwapBuffers(window);
         glfwPollEvents();        
         frame_time = ogli::now_ms() - old_time;
