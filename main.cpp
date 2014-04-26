@@ -29,7 +29,7 @@ float resolution_x = 1280.0f;
 float resolution_y = 800.0f;
 
 auto projection = glm::perspective(45.0f, resolution_x / resolution_y, 1.0f, 1000.f);
-auto view = glm::lookAt(glm::vec3(0.0f, 10.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+auto view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 Player player;
 

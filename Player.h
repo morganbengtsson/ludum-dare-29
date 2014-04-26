@@ -9,11 +9,11 @@
 #define	PLAYER_H
 
 #include <glm/glm.hpp>
+#include <Box2D/Box2D.h>
 
 class Player {
 public:
     Player();
-    Player(const Player& orig);
     virtual ~Player();
 
     bool up;
@@ -28,8 +28,11 @@ public:
     void update(float dt);
     glm::mat4 transform();
 private:
-    const float speed = 0.01;
-
+    const float speed_ = 5.0f;
+    b2World world_xy_;
+    b2Body * body_xy_;
+    b2World world_xz_;
+    b2Body * body_xz_;
 };
 
 #endif	/* PLAYER_H */
