@@ -128,7 +128,7 @@ int main(int argc, char** argv) {
     while (!glfwWindowShouldClose(window)) {
         double old_time = ogli::now_ms();      
         player.update(frame_time);
-        renderer.clear(glm::vec3(0.1f, 0.1f, 0.1f));
+        renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
         renderer.render(model, player.transform(), view, projection);
         glfwSwapBuffers(window);
         glfwPollEvents();        
