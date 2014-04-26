@@ -12,6 +12,10 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>Assets.cpp</itemPath>
+    <itemPath>Assets.h</itemPath>
+    <itemPath>Player.cpp</itemPath>
+    <itemPath>Player.h</itemPath>
     <itemPath>main.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
