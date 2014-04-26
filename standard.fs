@@ -9,6 +9,11 @@ varying vec3 v_position;
 varying vec3 v_normal; 
 varying vec3 v_position2;
 varying vec2 v_uv;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
 void main() {
 vec3 ambient = vec3(0.3, 0.3, 0.3);
 float d = (v_position.z + 100.0)/5000.0;
@@ -26,7 +31,7 @@ vec3 fog_color = vec3(0.0, 0.1, 0.2);
 vec3 frag_color = mix(fog_color, indirect, clamp(1.0 - fog, 0.0, 1.0));
 
 
-gl_FragColor = vec4(frag_color, 1.0);
+gl_FragColor = vec4(frag_color*(1.0 - (rand(gl_FragCoord.xy)*0.1)), 1.0);
 
 //gl_FragColor = vec4(indirect, 1.0);
 
