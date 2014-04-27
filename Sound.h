@@ -28,10 +28,28 @@ public:
     void setListenerVelocity(glm::vec3 velocity);
     void setListenerOrientation(glm::vec3 orientation);
     
-    void setSourcePosition(glm::vec3 position);
-    void setSourceVelocity(glm::vec3 velocity);    
+    void setMusicPosition(glm::vec3 position);
+    void setWasdPosition(glm::vec3 position);
+    void setScratch1Position(glm::vec3 position);
+    void setScratch2Position(glm::vec3 position);
+    void setScratch3Position(glm::vec3 position);
+    void setOxygenPosition(glm::vec3 position);
+    void setOutPosition(glm::vec3 position);
+    void setKlicksPosition(glm::vec3 position);
+    void setHeartbeatPosition(glm::vec3 position);
+    void setNoisePosition(glm::vec3 position);
+
     
-    void play();
+    void playMusic();
+    void playWasd();
+    void playScratch1();
+    void playScratch2();
+    void playScratch3();
+    void playOxygen();
+    void playOut();
+    void playKlicks();
+    void playHeartbeat();
+    void playNoise();
     
     void* load( char *fname, long *bufsize ){
         FILE* fp = fopen( fname, "rb" );
@@ -49,9 +67,36 @@ public:
 private:    
     ALCdevice* device_;
     ALCcontext* context_;
+            
+    ALuint music_source_;
+    ALuint music_buffer_;
     
-    ALuint source_;
-    ALuint buffer_;
+    ALuint wasd_source_;
+    ALuint wasd_buffer_;
+    
+    ALuint scratch1_source_;
+    ALuint scratch1_buffer_;    
+    
+    ALuint scratch2_source_;
+    ALuint scratch2_buffer_;    
+    
+    ALuint scratch3_source_;
+    ALuint scratch3_buffer_;
+    
+    ALuint oxygen_source_;
+    ALuint oxygen_buffer_;
+    
+    ALuint out_source_;
+    ALuint out_buffer_;
+    
+    ALuint klicks_source_;
+    ALuint klicks_buffer_;
+    
+    ALuint heartbeat_source_;
+    ALuint heartbeat_buffer_;
+    
+    ALuint noise_source_;
+    ALuint noise_buffer_;
     
 
 };

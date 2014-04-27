@@ -13,6 +13,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/random.hpp>
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -80,7 +81,15 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
         player.down = false;
     }
 }
-
+enum State{
+    STAGE1,
+    STAGE2,
+    STAGE3,
+    STAGE4,
+    STAGE5,
+    GAMEOVER,
+    WIN
+};
 /*
  * 
  */
@@ -118,9 +127,83 @@ int main(int argc, char** argv) {
     double frame_time = 0.0;
     
     Sound sound;
-    sound.play();
+    sound.playMusic();  
+    sound.playNoise();
+    
+    bool out_played = false;
+    bool wasd_played = false;
+    bool oxygen_played = false;
+    
+       
+    double heart_interval = 3000;
+    double heart_wait = 0;
+    double time = 0;
+    
+    State state = State::STAGE1;
+    sound.playOxygen();
     
     while (!glfwWindowShouldClose(window)) {
+        
+        time += frame_time;
+        heart_wait += frame_time;
+        if (heart_wait > heart_interval){
+            sound.playHeartbeat();            
+            heart_wait = 0;
+        }
+        
+        if (time > 20000 && time < 40000){
+            state = State::STAGE2;            
+        }
+        else if (time > 40000 && time < 80000){
+            state = State::STAGE3;
+        }
+        else if (time > 80000 && time < 120000){
+            state = State::STAGE4;
+        }        
+        else if (time > 120000 && time < 200000){        
+            state = State::STAGE5;
+        }
+        else if (time > 200000){
+            state = State::GAMEOVER;
+        }
+        
+        if (state == State::STAGE1){
+            heart_interval = 3000;            
+        }
+        
+        if (state == State::STAGE2){
+            heart_interval = 2000;
+            if (!wasd_played){
+                sound.playWasd();
+                wasd_played = true;
+            }
+        }
+        else if (state == State::STAGE3){
+            heart_interval = 1000;
+            if (!out_played){
+                sound.playOut();
+                out_played = true;
+            }
+        }
+        else if (state == State::STAGE4){
+            heart_interval = 500;
+        }
+        else if (state == State::STAGE5){
+            heart_interval = glm::linearRand(100.0, 300.0);
+        }
+        else if (state == State::GAMEOVER){
+            renderer.clear(glm::vec3(0.0f, 0.0f, 0.5f));
+            continue;
+        }
+        else if (state == State::WIN){
+            renderer.clear(glm::vec3(1.0f, 1.0f, 1.0f));
+            continue;
+        }
+        
+        sound.setHeartbeatPosition(player.position());
+        sound.setNoisePosition(player.position());
+        sound.setOutPosition(player.position());
+        sound.setWasdPosition(player.position());
         
         sound.setListenerPosition(player.position());
         
