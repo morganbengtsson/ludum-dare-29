@@ -33,8 +33,8 @@ private:
     b2World world_xz_;
     b2Body * body_xz_;
     
-    const float max_ = 4.0f;
-    const float min_ = 0.1f;
+    const float max_ = -2.0f;
+    const float min_ = 2.0;;
 };
 
 #endif	/* PLAYER_H */

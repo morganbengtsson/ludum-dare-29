@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
     auto ortho_proj = glm::ortho(-0.5f, 0.5f, -0.5f, 0.5f, 1.0f, 1000.0f);
     auto straight_view = glm::lookAt(glm::vec3(0.0f, 0.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     
-    mo::Model model(assets.loadMesh("data/Level.obj"), assets.loadTexture("data/Floor.png"));
+    mo::Model model(assets.loadMesh("data/Level.obj"), assets.loadTexture("data/Level.png"));
     mo::Model quad(assets.loadMesh("data/Quad.obj"), assets.loadTexture("data/Block.png"));    
     double frame_time = 0.0;
     
@@ -125,6 +125,8 @@ int main(int argc, char** argv) {
         sound.setListenerPosition(player.position());
         
         view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
+        
+        std::cout << player.position().y << std::endl;
         
         double old_time = ogli::now_ms();      
         player.update(frame_time);

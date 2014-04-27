@@ -59,13 +59,19 @@ void Player::update(float dt){
     world_xz_.Step(1.0f / 60.0f, 6, 2);
       
     if (up){        
-        if (body_xz_->GetPosition().y > min_){
-            body_xy_->ApplyForceToCenter(b2Vec2(0.0f, -speed_));
+        if (body_xy_->GetPosition().y > max_){
+             body_xy_->ApplyForceToCenter(b2Vec2(0.0f, -speed_));
+        }
+        else{
+             body_xy_->ApplyForceToCenter(b2Vec2(0.0f, speed_));
         }
     }
     if(down){        
-        if (body_xz_->GetPosition().y < max_){
+        if (body_xy_->GetPosition().y < min_){
             body_xy_->ApplyForceToCenter(b2Vec2(0.0f, speed_));
+        }
+        else{
+            body_xy_->ApplyForceToCenter(b2Vec2(0.0f, -speed_));        
         }
     }
     if(left){      
