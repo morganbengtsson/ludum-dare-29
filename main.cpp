@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
     glfwSetErrorCallback(error_callback);
 
     glfwWindowHint(GLFW_SAMPLES, 4);
-    GLFWwindow* window = glfwCreateWindow(resolution_x, resolution_y, "Ludum", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(resolution_x, resolution_y, "Try to get out", NULL, NULL);
 
     if (!window) {
         glfwTerminate();

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ludum-dare-29
+PROJECTNAME=Try to get out
 
 # Active Configuration
 DEFAULTCONF=Debug-w32

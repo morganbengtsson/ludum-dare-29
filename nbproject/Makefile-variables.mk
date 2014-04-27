@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Release-unix configuration
 CND_PLATFORM_Release-unix=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release-unix=dist/Release-unix/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release-unix=ludum-dare-29
-CND_ARTIFACT_PATH_Release-unix=dist/Release-unix/GNU-Linux-x86/ludum-dare-29
+CND_ARTIFACT_NAME_Release-unix=try_to_get_out
+CND_ARTIFACT_PATH_Release-unix=dist/Release-unix/GNU-Linux-x86/try_to_get_out
 CND_PACKAGE_DIR_Release-unix=dist/Release-unix/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release-unix=ludum-dare-29.tar
-CND_PACKAGE_PATH_Release-unix=dist/Release-unix/GNU-Linux-x86/package/ludum-dare-29.tar
+CND_PACKAGE_NAME_Release-unix=trytogetout.tar
+CND_PACKAGE_PATH_Release-unix=dist/Release-unix/GNU-Linux-x86/package/trytogetout.tar
 # Debug-unix configuration
 CND_PLATFORM_Debug-unix=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug-unix=dist/Debug-unix/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug-unix=ludum-dare-29
-CND_ARTIFACT_PATH_Debug-unix=dist/Debug-unix/GNU-Linux-x86/ludum-dare-29
+CND_ARTIFACT_NAME_Debug-unix=try_to_get_out
+CND_ARTIFACT_PATH_Debug-unix=dist/Debug-unix/GNU-Linux-x86/try_to_get_out
 CND_PACKAGE_DIR_Debug-unix=dist/Debug-unix/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug-unix=ludum-dare-29.tar
-CND_PACKAGE_PATH_Debug-unix=dist/Debug-unix/GNU-Linux-x86/package/ludum-dare-29.tar
+CND_PACKAGE_NAME_Debug-unix=trytogetout.tar
+CND_PACKAGE_PATH_Debug-unix=dist/Debug-unix/GNU-Linux-x86/package/trytogetout.tar
 #
 # include compiler specific variables
 #

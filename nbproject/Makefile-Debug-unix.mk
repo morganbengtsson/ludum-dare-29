@@ -59,19 +59,19 @@ LDLIBSOPTIONS=../mo/dist/Debug/GNU-Linux-x86/libmo.a ../glfw/src/libglfw3.a ../g
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../mo/dist/Debug/GNU-Linux-x86/libmo.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out: ../mo/dist/Debug/GNU-Linux-x86/libmo.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../glfw/src/libglfw3.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out: ../glfw/src/libglfw3.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../glew-1.9.0/lib/libGLEW.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out: ../glew-1.9.0/lib/libGLEW.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../Box2D_v2.2.1/Box2D/libBox2D.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out: ../Box2D_v2.2.1/Box2D/libBox2D.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Assets.o: Assets.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -100,7 +100,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/try_to_get_out
 
 # Subprojects
 .clean-subprojects:
