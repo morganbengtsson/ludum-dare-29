@@ -161,8 +161,6 @@ int main(int argc, char** argv) {
         
         view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
         
-        std::cout << player.position().x << " "<< player.position().z << std::endl;
-        
         double old_time = ogli::now_ms();    
         
         player.update(frame_time);

@@ -120,13 +120,10 @@
             <pElem>../glew-1.9.0/include</pElem>
             <pElem>../glfw/include</pElem>
             <pElem>../glm</pElem>
-            <pElem>../Sirkel</pElem>
-            <pElem>../stb</pElem>
-            <pElem>../rapidxml-1.13</pElem>
             <pElem>../ogli</pElem>
-            <pElem>../imgui</pElem>
             <pElem>../mo</pElem>
             <pElem>../objload</pElem>
+            <pElem>../rapidxml-1.13</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
