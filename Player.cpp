@@ -13,7 +13,7 @@
 Player::Player() : world_xy_(b2Vec2(0.0f, 0.0f)), world_xz_(b2Vec2(0.0f, 0.0f)) {
     b2BodyDef body_def;
     body_def.type = b2_dynamicBody;
-    body_def.position.Set(0.0f, 0.0f);
+    body_def.position.Set(0.0f, 1.0f);
     body_xy_ = world_xy_.CreateBody(&body_def);
        
     b2PolygonShape dynamic_box;
@@ -58,11 +58,15 @@ void Player::update(float dt){
     world_xy_.Step(1.0f / 60.0f, 6, 2);
     world_xz_.Step(1.0f / 60.0f, 6, 2);
       
-    if (up){
-        body_xy_->ApplyForceToCenter(b2Vec2(0.0f, -speed_));
+    if (up){        
+        if (body_xz_->GetPosition().y > min_){
+            body_xy_->ApplyForceToCenter(b2Vec2(0.0f, -speed_));
+        }
     }
-    if(down){
-        body_xy_->ApplyForceToCenter(b2Vec2(0.0f, speed_));
+    if(down){        
+        if (body_xz_->GetPosition().y < max_){
+            body_xy_->ApplyForceToCenter(b2Vec2(0.0f, speed_));
+        }
     }
     if(left){      
         body_xz_->ApplyTorque(-speed_*0.1f);

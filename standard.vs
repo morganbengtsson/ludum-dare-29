@@ -11,6 +11,7 @@ varying vec3 v_position;
 varying vec3 v_normal;
 varying vec3 v_position2;
 varying vec2 v_uv;
+
 void main()
 {
     v_uv = uv;

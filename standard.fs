@@ -21,6 +21,9 @@ float d = (v_position.z + 100.0)/5000.0;
 vec3 light = normalize(camera_position - v_position2);
 float intensity = max(dot(v_normal,light), 0.0) * 0.1;        
 
+float rand1 = rand(v_uv) - 0.5;
+float rand2 = rand(v_uv + 2.0) - 0.5;
+
 vec3 indirect = texture2D(texture, v_uv).rgb;
 
 float fog_cord = (gl_FragCoord.z / gl_FragCoord.w) / 1000.0;
@@ -33,7 +36,7 @@ vec3 frag_color = mix(fog_color, indirect, clamp(1.0 - fog, 0.0, 1.0));
 
 gl_FragColor = vec4(frag_color*(1.0 - (rand(gl_FragCoord.xy)*0.1)), 1.0);
 
-//gl_FragColor = vec4(indirect, 1.0);
+gl_FragColor = vec4(indirect, 1.0);
 
 //gl_FragColor = vec4(color.xyz, 1.0);
 
