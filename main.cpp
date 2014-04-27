@@ -39,8 +39,6 @@ void error_callback(int error, const char* description) {
     fputs(description, stderr);
 }
 
-
-
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
@@ -123,11 +121,21 @@ int main(int argc, char** argv) {
     auto straight_view = glm::lookAt(glm::vec3(0.0f, 0.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     
     mo::Model model(assets.loadMesh("data/Level.obj"), assets.loadTexture("data/Level.png"));
-    mo::Model quad(assets.loadMesh("data/Quad.obj"), assets.loadTexture("data/Block.png"));    
+    mo::Model quad(assets.loadMesh("data/Quad.obj"), assets.loadTexture("data/Tree.png")); 
+    mo::Model pipe(assets.loadMesh("data/Pipe.obj"), assets.loadTexture("data/Pipe.png")); 
+    
+    std::vector<mo::Model> trees;
+    for (int i = 0; i < 80; i++){
+        //trees.push_back(mo::Model(assets.loadMesh("data/Tree.obj"), assets.loadTexture("data/Tree.png"), glm::translate(glm::linearRand(-50.0f, 50.0f), 0.0f, glm::linearRand(-50.0f, 50.0f)))); 
+        trees.push_back(mo::Model(assets.loadMesh("data/Tree.obj"), assets.loadTexture("data/Tree.png"), glm::rotate(glm::linearRand(0.0f, 360.0f), 0.0f, 1.0f, 0.0f) * glm::translate(glm::linearRand(-20.0f, 20.0f),  0.0f, glm::linearRand(-20.0f, 20.0f)))); 
+    
+    }
     double frame_time = 0.0;
     
     Sound sound;
-    sound.playMusic();  
+    sound.playMusic();
+    sound.playMusic2();
+    sound.setMusic2Position(glm::vec3(-45.0, -45.0, 1.0f));
     sound.playNoise();
     
     bool out_played = false;
@@ -144,6 +152,22 @@ int main(int argc, char** argv) {
     
     while (!glfwWindowShouldClose(window)) {
         
+        sound.setHeartbeatPosition(player.position());
+        sound.setNoisePosition(player.position());
+        sound.setOutPosition(player.position());
+        sound.setWasdPosition(player.position());
+        
+        sound.setListenerPosition(player.position());
+        
+        view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
+        
+        std::cout << player.position().x << " "<< player.position().z << std::endl;
+        
+        double old_time = ogli::now_ms();    
+        
+        player.update(frame_time);
+        
+        
         time += frame_time;
         heart_wait += frame_time;
         if (heart_wait > heart_interval){
@@ -157,26 +181,46 @@ int main(int argc, char** argv) {
         else if (time > 40000 && time < 80000){
             state = State::STAGE3;
         }
-        else if (time > 80000 && time < 120000){
+        else if (time > 80000 && time < 100000){
             state = State::STAGE4;
         }        
-        else if (time > 120000 && time < 200000){        
+        else if (time > 100000 && time < 130000){        
             state = State::STAGE5;
         }
-        else if (time > 200000){
+        else if (time > 130000){
             state = State::GAMEOVER;
+            heart_interval = 30000000;
+        }
+        if (player.position().x < -41.0f && player.position().z < -41.0f){
+            state = State::WIN;
+            heart_interval = 3000;
         }
         
-        if (state == State::STAGE1){
-            heart_interval = 3000;            
+        
+        if (state == State::STAGE1) {
+            heart_interval = 3000;
+            renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
+            renderer.render(model, glm::mat4(1.0f), view, projection);
+            renderer.render(pipe, glm::mat4(1.0f), view, projection);
+            for (auto tree: trees){
+                renderer.render(tree, tree.transform(), view, projection);
+            }
+            renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");            
         }
         
-        if (state == State::STAGE2){
+        else if (state == State::STAGE2) {
             heart_interval = 2000;
             if (!wasd_played){
                 sound.playWasd();
                 wasd_played = true;
             }
+            renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
+            renderer.render(model, glm::mat4(1.0f), view, projection);
+            renderer.render(pipe, glm::mat4(1.0f), view, projection);
+            for (auto tree: trees){
+                renderer.render(tree, tree.transform(), view, projection);
+            }
+            renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");            
         }
         else if (state == State::STAGE3){
             heart_interval = 1000;
@@ -184,38 +228,41 @@ int main(int argc, char** argv) {
                 sound.playOut();
                 out_played = true;
             }
+            renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
+            renderer.render(model, glm::mat4(1.0f), view, projection);
+            renderer.render(pipe, glm::mat4(1.0f), view, projection);
+            for (auto tree: trees){
+                renderer.render(tree, tree.transform(), view, projection);
+            }
+            renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");            
         }
         else if (state == State::STAGE4){
             heart_interval = 500;
+            renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
+            renderer.render(model, glm::mat4(1.0f), view, projection);
+            renderer.render(pipe, glm::mat4(1.0f), view, projection);
+            for (auto tree: trees){
+                renderer.render(tree, tree.transform(), view, projection);
+            }
+            renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");
         }
         else if (state == State::STAGE5){
-            heart_interval = glm::linearRand(100.0, 300.0);
+            heart_interval = glm::linearRand(200.0, 400.0);
+            renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
+            renderer.render(model, glm::mat4(1.0f), view, projection);
+            renderer.render(pipe, glm::mat4(1.0f), view, projection);
+            for (auto tree: trees){
+                renderer.render(tree, tree.transform(), view, projection);
+            }
+            renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");            
         }
         else if (state == State::GAMEOVER){
-            renderer.clear(glm::vec3(0.0f, 0.0f, 0.5f));
-            continue;
+            renderer.clear(glm::vec3(0.3f, 0.0f, 0.0f));        
         }
         else if (state == State::WIN){
-            renderer.clear(glm::vec3(1.0f, 1.0f, 1.0f));
-            continue;
+            renderer.clear(glm::vec3(1.0f, 1.0f, 1.0f));            
         }
         
-        sound.setHeartbeatPosition(player.position());
-        sound.setNoisePosition(player.position());
-        sound.setOutPosition(player.position());
-        sound.setWasdPosition(player.position());
-        
-        sound.setListenerPosition(player.position());
-        
-        view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
-        
-        std::cout << player.position().y << std::endl;
-        
-        double old_time = ogli::now_ms();      
-        player.update(frame_time);
-        renderer.clear(glm::vec3(0.0f, 0.1f, 0.2f));
-        renderer.render(model, glm::mat4(1.0f), view, projection);
-        renderer.render(quad, glm::mat4(1.0f), straight_view, ortho_proj, "hud");
         glfwSwapBuffers(window);
         glfwPollEvents();        
         frame_time = ogli::now_ms() - old_time;

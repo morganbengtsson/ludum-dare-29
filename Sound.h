@@ -29,6 +29,7 @@ public:
     void setListenerOrientation(glm::vec3 orientation);
     
     void setMusicPosition(glm::vec3 position);
+    void setMusic2Position(glm::vec3 position);
     void setWasdPosition(glm::vec3 position);
     void setScratch1Position(glm::vec3 position);
     void setScratch2Position(glm::vec3 position);
@@ -39,7 +40,7 @@ public:
     void setHeartbeatPosition(glm::vec3 position);
     void setNoisePosition(glm::vec3 position);
 
-    
+    void playMusic2();
     void playMusic();
     void playWasd();
     void playScratch1();
@@ -69,6 +70,7 @@ private:
     ALCcontext* context_;
             
     ALuint music_source_;
+    ALuint music_source2_;
     ALuint music_buffer_;
     
     ALuint wasd_source_;

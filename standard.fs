@@ -25,6 +25,7 @@ float rand1 = rand(v_uv) - 0.5;
 float rand2 = rand(v_uv + 2.0) - 0.5;
 
 vec3 indirect = texture2D(texture, v_uv).rgb;
+float alpha = texture2D(texture, v_uv).a;
 
 float fog_cord = (gl_FragCoord.z / gl_FragCoord.w) / 1000.0;
 float fog_density = 40.0;
@@ -34,7 +35,7 @@ vec3 fog_color = vec3(0.0, 0.1, 0.2);
 vec3 frag_color = mix(fog_color, indirect, clamp(1.0 - fog, 0.0, 1.0));
 
 
-gl_FragColor = vec4(frag_color*(1.0 - (rand(gl_FragCoord.xy)*0.1)), 1.0);
+gl_FragColor = vec4(frag_color*(1.0 - (rand(gl_FragCoord.xy)*0.1)), alpha);
 
 //gl_FragColor = vec4(indirect, 1.0);
 

@@ -24,7 +24,15 @@ Sound::Sound() {
    alSourcef( music_source_, AL_GAIN, 1. );
    setMusicPosition(glm::vec3(0.0f, 0.0f, 3.0f));
    alSource3f( music_source_, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
-   alSourcei( music_source_, AL_LOOPING, AL_TRUE );   
+   alSourcei( music_source_, AL_LOOPING, AL_TRUE );
+
+//One source for now
+   alGenSources( 1, &music_source2_);
+   alSourcef( music_source2_, AL_PITCH, 1. );
+   alSourcef( music_source2_, AL_GAIN, 1. );
+   setMusicPosition(glm::vec3(0.0f, 0.0f, 3.0f));
+   alSource3f( music_source2_, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
+   alSourcei( music_source2_, AL_LOOPING, AL_TRUE );   
    
    alGenBuffers( 1, &music_buffer_ );
    {
@@ -35,6 +43,7 @@ Sound::Sound() {
       free( (void*)data );
    }
    alSourcei( music_source_, AL_BUFFER, music_buffer_ );
+   alSourcei( music_source2_, AL_BUFFER, music_buffer_ );
    
    
    //One source for now
@@ -252,9 +261,15 @@ void Sound::setNoisePosition(glm::vec3 position){
 void Sound::setMusicPosition(glm::vec3 position) {
     alSource3f( music_source_, AL_POSITION, position.x, position.y, position.z );
 }
+void Sound::setMusic2Position(glm::vec3 position) {
+    alSource3f( music_source2_, AL_POSITION, position.x, position.y, position.z );
+}
 
 void Sound::playMusic(){
    alSourcePlay( music_source_);
+}
+void Sound::playMusic2(){
+   alSourcePlay( music_source2_);
 }
 void Sound::playWasd(){
     alSourcePlay( wasd_source_);
