@@ -16,6 +16,8 @@
     <itemPath>Assets.h</itemPath>
     <itemPath>Player.cpp</itemPath>
     <itemPath>Player.h</itemPath>
+    <itemPath>Sound.cpp</itemPath>
+    <itemPath>Sound.h</itemPath>
     <itemPath>main.cpp</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -61,6 +63,10 @@
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sound.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -91,6 +97,10 @@
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -132,6 +142,7 @@
             <linkerLibLibItem>Xi</linkerLibLibItem>
             <linkerLibLibItem>Xxf86vm</linkerLibLibItem>
             <linkerLibLibItem>pthread</linkerLibLibItem>
+            <linkerLibLibItem>openal</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
         <requiredProjects>
@@ -154,6 +165,10 @@
       <item path="Player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Player.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sound.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

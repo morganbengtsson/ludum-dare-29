@@ -48,6 +48,12 @@ glm::mat4 Player::transform(){
     return glm::rotate(angle, 0.0f , 1.0f, 0.0f) * glm::translate(pos_xz.x, pos_xy.y, pos_xz.y);
 }
 
+glm::vec3 Player::position(){
+    b2Vec2 pos_xy = body_xy_->GetPosition();
+    b2Vec2 pos_xz = body_xz_->GetPosition();
+    return glm::vec3(pos_xz.x, pos_xy.y, pos_xz.y);
+}
+
 void Player::update(float dt){
     world_xy_.Step(1.0f / 60.0f, 6, 2);
     world_xz_.Step(1.0f / 60.0f, 6, 2);

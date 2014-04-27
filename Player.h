@@ -23,8 +23,7 @@ public:
     bool forward;
     bool back;
     
-    glm::vec3 position;
-
+    glm::vec3 position();
     void update(float dt);
     glm::mat4 transform();
 private:

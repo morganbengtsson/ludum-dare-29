@@ -24,6 +24,7 @@
 
 #include "Assets.h"
 #include "Player.h"
+#include "Sound.h"
 
 float resolution_x = 1280.0f;
 float resolution_y = 800.0f;
@@ -115,7 +116,13 @@ int main(int argc, char** argv) {
     mo::Model model(assets.loadMesh("data/Level.obj"), assets.loadTexture("data/Floor.png"));
     mo::Model quad(assets.loadMesh("data/Quad.obj"), assets.loadTexture("data/Block.png"));    
     double frame_time = 0.0;
+    
+    Sound sound;
+    sound.play();
+    
     while (!glfwWindowShouldClose(window)) {
+        
+        sound.setListenerPosition(player.position());
         
         view = glm::lookAt(glm::vec3(0.0f, 5.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * player.transform();
         

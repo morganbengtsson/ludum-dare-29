@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Assets.o \
 	${OBJECTDIR}/Player.o \
+	${OBJECTDIR}/Sound.o \
 	${OBJECTDIR}/main.o
 
 
@@ -54,7 +55,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../Sirkel/dist/Debug/GNU-Linux-x86/libsirkel.a ../mo/dist/Debug/GNU-Linux-x86/libmo.a ../glfw/src/libglfw3.a ../glew-1.9.0/lib/libGLEW.a ../Box2D_v2.2.1/Box2D/libBox2D.a -lX11 -lGL -lXrandr -lXi -lXxf86vm -lpthread
+LDLIBSOPTIONS=../Sirkel/dist/Debug/GNU-Linux-x86/libsirkel.a ../mo/dist/Debug/GNU-Linux-x86/libmo.a ../glfw/src/libglfw3.a ../glew-1.9.0/lib/libGLEW.a ../Box2D_v2.2.1/Box2D/libBox2D.a -lX11 -lGL -lXrandr -lXi -lXxf86vm -lpthread -lopenal
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -83,6 +84,11 @@ ${OBJECTDIR}/Player.o: Player.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+
+${OBJECTDIR}/Sound.o: Sound.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../Sirkel -I../stb -I../rapidxml-1.13 -I../ogli -I../imgui -I../mo -I../objload -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sound.o Sound.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
