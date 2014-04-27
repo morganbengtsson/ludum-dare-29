@@ -31,7 +31,7 @@ DEFAULTCONF=Debug-w32
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Debug-w32 Release Debug-unix 
+ALLCONFS=Debug-w32 Release-unix Debug-unix 
 
 
 # build

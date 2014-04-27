@@ -3,5 +3,5 @@
 #
 # NOCDDL
 #
-# Release configuration
+# Release-unix configuration
 # Debug-unix configuration

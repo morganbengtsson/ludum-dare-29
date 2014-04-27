@@ -29,7 +29,7 @@ Sound::Sound() {
 //One source for now
    alGenSources( 1, &music_source2_);
    alSourcef( music_source2_, AL_PITCH, 1. );
-   alSourcef( music_source2_, AL_GAIN, 1. );
+   alSourcef( music_source2_, AL_GAIN, 2. );
    setMusicPosition(glm::vec3(0.0f, 0.0f, 3.0f));
    alSource3f( music_source2_, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
    alSourcei( music_source2_, AL_LOOPING, AL_TRUE );   

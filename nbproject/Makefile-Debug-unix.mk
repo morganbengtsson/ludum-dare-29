@@ -55,13 +55,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=../Sirkel/dist/Debug/GNU-Linux-x86/libsirkel.a ../mo/dist/Debug/GNU-Linux-x86/libmo.a ../glfw/src/libglfw3.a ../glew-1.9.0/lib/libGLEW.a ../Box2D_v2.2.1/Box2D/libBox2D.a -lX11 -lGL -lXrandr -lXi -lXxf86vm -lpthread -lopenal
+LDLIBSOPTIONS=../mo/dist/Debug/GNU-Linux-x86/libmo.a ../glfw/src/libglfw3.a ../glew-1.9.0/lib/libGLEW.a ../Box2D_v2.2.1/Box2D/libBox2D.a -lX11 -lGL -lXrandr -lXi -lXxf86vm -lpthread -lopenal
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../Sirkel/dist/Debug/GNU-Linux-x86/libsirkel.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ../mo/dist/Debug/GNU-Linux-x86/libmo.a
 
@@ -78,22 +76,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ludum-dare-29: ${OBJECTFILES}
 ${OBJECTDIR}/Assets.o: Assets.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Assets.o Assets.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Assets.o Assets.cpp
 
 ${OBJECTDIR}/Player.o: Player.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Player.o Player.cpp
 
 ${OBJECTDIR}/Sound.o: Sound.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sound.o Sound.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sound.o Sound.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -I../lodepng -I../Box2D_v2.2.1 -I../glew-1.9.0/include -I../glfw/include -I../glm -I../ogli -I../mo -I../objload -I../rapidxml-1.13 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
     Sound sound;
     sound.playMusic();
     sound.playMusic2();
-    sound.setMusic2Position(glm::vec3(-45.0, -45.0, 1.0f));
+    sound.setMusic2Position(glm::vec3(-45.0, 1.0, -45.0));
     sound.playNoise();
     
     bool out_played = false;
